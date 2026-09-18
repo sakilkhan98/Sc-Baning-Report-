@@ -1,0 +1,6 @@
+{
+  "name": "Ns MODS VIBES - ShareChat Report & Profile Suite",
+  "description": "Advanced report generator, incident code compiler, and profile DP downloader for ShareChat users.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
