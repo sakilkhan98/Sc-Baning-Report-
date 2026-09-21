@@ -13,14 +13,21 @@ export default async function handler(req: any, res: any) {
   }
 
   const rawUrl = req.query.url as string;
-  let filename = (req.query.filename as string) || 'sharechat_image.jpg';
+  let filename = (req.query.filename as string) || 'sharechat_media';
 
   if (!rawUrl) {
-    return res.status(400).send('Image URL is required');
+    return res.status(400).send('Media URL is required');
   }
 
-  if (!/\.(jpg|jpeg|png|webp)$/i.test(filename)) {
-    filename += '.jpg';
+  // Ensure valid extension
+  if (!/\.(jpg|jpeg|png|webp|mp4|webm|mp3|m4a|aac)$/i.test(filename)) {
+    if (rawUrl.includes('.mp4')) {
+      filename += '.mp4';
+    } else if (rawUrl.includes('.mp3') || rawUrl.includes('.m4a')) {
+      filename += '.mp3';
+    } else {
+      filename += '.jpg';
+    }
   }
 
   try {

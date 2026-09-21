@@ -3,6 +3,7 @@ import path from 'path';
 import { createServer as createViteServer } from 'vite';
 import sharechatProfileHandler from './api/sharechat-profile';
 import downloadImageHandler from './api/download-image';
+import sharechatMediaHandler from './api/sharechat-media';
 
 async function startServer() {
   const app = express();
@@ -20,8 +21,17 @@ async function startServer() {
     await sharechatProfileHandler(req, res);
   });
 
-  // API Route: Download Image as forced attachment (bypasses CORS)
+  // API Route: ShareChat Video & Chatroom Scraper
+  app.get('/api/sharechat-media', async (req, res) => {
+    await sharechatMediaHandler(req, res);
+  });
+
+  // API Route: Download Image/Video/Audio as forced attachment (bypasses CORS)
   app.get('/api/download-image', async (req, res) => {
+    await downloadImageHandler(req, res);
+  });
+
+  app.get('/api/download-media', async (req, res) => {
     await downloadImageHandler(req, res);
   });
 

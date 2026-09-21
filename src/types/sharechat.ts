@@ -26,6 +26,27 @@ export interface SharechatProfile {
   language?: string;
   isVerified?: boolean;
   isRealScraped?: boolean;
+  isProfileLocked?: boolean;
+  lockBypassed?: boolean;
+}
+
+export interface SharechatVideo {
+  postId: string;
+  postUrl: string;
+  title: string;
+  caption: string;
+  videoUrl: string;
+  audioUrl?: string;
+  thumbnailUrl?: string;
+  authorName?: string;
+  authorHandle?: string;
+  authorAvatar?: string;
+  views?: string;
+  likes?: string;
+  shares?: string;
+  isRealScraped?: boolean;
 }
 
 export type AppLanguage = 'en' | 'bn';
+export type ActiveTab = 'profile' | 'video' | 'vip_frame' | 'safety_audit';
+
